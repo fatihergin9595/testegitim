@@ -49,8 +49,8 @@ app.post(`/webhook/${WEBHOOK_SECRET}`, async (req, res) => {
       const err = await handleEkle(text, from, chatId);
       if (err) await sendTelegramMessage(chatId, err);
     } else if (text.startsWith("/rapor")) {
-      const reply = await handleRapor(text, from, chatId);
-      await sendTelegramMessage(chatId, reply);
+      const err = await handleRapor(text, from, chatId);
+      if (err) await sendTelegramMessage(chatId, err);
     } else if (text.startsWith("/start")) {
       await sendTelegramMessage(chatId, "Komutlar:\n/ekle <username> <miktar>\n/rapor <baslangic> <bitis>");
     }

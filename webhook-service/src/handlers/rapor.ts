@@ -4,11 +4,11 @@ export const handleRapor = async (
   text: string,
   from: string,
   chatId: number
-): Promise<string> => {
+): Promise<string | null> => {
   const parts = text.trim().split(/\s+/);
 
   if (parts.length !== 3) {
-    return "Kullanim: /rapor <baslangic-tarih> <bitis-tarih>\nOrnek: /rapor 2024-01-01 2024-01-31";
+    return "Kullanim: /rapor <baslangic-tarih> <bitis-tarih>\nOrnek: /rapor 2026-01-01 2026-01-31";
   }
 
   const [, startDate, endDate] = parts;
@@ -21,7 +21,7 @@ export const handleRapor = async (
   try {
     await publish("rapor.talep", { startDate, endDate, requestedBy: from, chatId });
     console.log(`[RAPOR] Publish edildi → ${startDate} - ${endDate}`);
-    return `Rapor hazirlaniyor: ${startDate} - ${endDate}`;
+    return null;
   } catch (err) {
     console.error("[RAPOR] NATS publish hatası:", err);
     return "Sistem hatası, lütfen tekrar deneyin.";

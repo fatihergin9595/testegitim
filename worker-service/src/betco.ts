@@ -114,10 +114,6 @@ export const validateAndCorrUp = async (
   const client = await getClient(username);
   const clientId: number = client.Id;
 
-  if (client.Balance > 0) {
-    throw new Error(`Bakiye sıfır değil: ${client.Balance}`);
-  }
-
   const [bonusMoney, hasActiveBet, isNoBonus] = await Promise.all([
     checkBonusMoney(clientId),
     checkActiveBet(clientId),
