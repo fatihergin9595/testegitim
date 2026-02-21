@@ -115,7 +115,7 @@ export const validateAndCorrUp = async (
   const clientId: number = client.Id;
 
   if ((client.Balance ?? 0) >= 5) {
-    throw new Error(`Bakiye 5 TL veya üzerinde: ${client.Balance} TRY`);
+    throw new Error(`Üyenin bakiyesi 5 TL üzerinde.`);
   }
 
   const [bonusMoney, hasActiveBet, isNoBonus] = await Promise.all([
