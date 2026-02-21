@@ -1,0 +1,14 @@
+# Bağımlılıklar
+node_modules/
+
+# Ortam değişkenleri — gerçek token'lar burada, git'e gitmemeli
+.env
+
+# TypeScript derleme çıktısı
+dist/
+
+# Claude Code ayarları
+.claude/
+
+# macOS sistem dosyaları
+.DS_Store
